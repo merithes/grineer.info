@@ -1,0 +1,396 @@
+// app global css in SCSS form
+
+body {
+  overflow-y: scroll
+}
+
+/*
+ *------------------------- COLORS
+*/
+
+.text-grineer {
+  color: #bf2934;
+}
+.bg-grineer {
+  background: #bf2934;
+}
+
+.text-corpus {
+  color: #28526a;
+}
+.bg-corpus {
+  background: #28526a;
+}
+
+.text-infested {
+  color: #438257;
+}
+.bg-infested {
+  background: #438257;
+}
+
+.text-light-dark-overlay {
+  color: rgba(0, 0, 0, .1);
+}
+.bg-light-dark-overlay {
+  background: rgba(0, 0, 0, .1);
+}
+
+.text-med-dark-overlay {
+  color: rgba(0, 0, 0, .3);
+}
+.bg-med-dark-overlay {
+  background: rgba(0, 0, 0, .3);
+}
+
+.text-heavy-dark-overlay {
+  color: rgba(0, 0, 0, .5);
+}
+.bg-heavy-dark-overlay {
+  background: rgba(0, 0, 0, .5);
+}
+
+.text-uheavy-dark-overlay {
+  color: rgba(0, 0, 0, .9);
+}
+.bg-uheavy-dark-overlay {
+  background: rgba(0, 0, 0, .9);
+}
+
+.text-light-bright-overlay {
+  color: rgba(255, 255, 255, .1);
+}
+.bg-light-bright-overlay {
+  background: rgba(255, 255, 255, .1);
+}
+
+.text-med-bright-overlay {
+  color: rgba(255, 255, 255, .3);
+}
+.bg-med-bright-overlay {
+  background: rgba(255, 255, 255, .3);
+}
+
+.text-heavy-bright-overlay {
+  color: rgba(255, 255, 255, .5);
+}
+.bg-heavy-bright-overlay {
+  background: rgba(255, 255, 255, .5);
+}
+
+.text-uheavy-bright-overlay {
+  color: rgba(255, 255, 255, .9);
+}
+.bg-uheavy-bright-overlay {
+  background: rgba(255, 255, 255, .9);
+}
+
+/*
+ *------------------------- FONTS
+*/
+
+@font-face {
+  font-family: michroma;
+  src: url(../assets/Michroma-Regular.ttf);
+}
+
+.michroma {
+  font-family: 'michroma', sans-serif;
+}
+
+@font-face {
+  font-family: inconsolata;
+  src: url(../assets/Inconsolata.ttf);
+}
+
+.inconsolata {
+  font-family: 'inconsolata', 'consolas';
+}
+
+@font-face {
+  font-family: cultiveMono;
+  src: url(../assets/CutiveMono-Regular.ttf);
+}
+
+.cultive-mono {
+  font-family: 'cultiveMono', 'consolas';
+}
+
+@font-face {
+  font-family: courierPrime;
+  src: url(../assets/CourierPrime-Regular.ttf);
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: courierPrime;
+  src: url(../assets/CourierPrime-Bold.ttf);
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: courierPrime;
+  src: url(../assets/CourierPrime-BoldItalic.ttf);
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: courierPrime;
+  src: url(../assets/CourierPrime-Italic.ttf);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.courier-prime {
+  font-family: 'courierPrime', 'consolas';
+}
+
+/*
+ *------------------------- ADDED BEHAVIOR
+*/
+
+.linear-progress-opaque .q-linear-progress__track {
+  opacity: 1;
+}
+
+.tgi-zoom-in-effect:hover {
+  transform: scale(1.1);
+}
+
+/*
+ *------------------------- CUSTOM BLOCKS BEHAVIOR
+*/
+
+.tgi-invasion-item > .q-expansion-item__container > .q-item > .q-item__section.column.q-focusable {
+  display: none !important;
+}
+
+.tgi-invasion-item > .q-expansion-item__container > .q-item {
+  padding: 0;
+}
+
+.tgi-invasion-item > .q-expansion-item__container > .q-item > .q-focus-helper {
+  opacity: 0 !important;
+}
+
+.tgi-alert-menu {
+  top: 50px;
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 40% 100%, 0 50%);
+}
+
+.tgi-alert-menu .q-btn__wrapper {
+  padding-left: 1em;
+  padding-top: .4em;
+  padding-bottom: .4em;
+  padding-right: .5em;
+}
+
+/*
+ *------------------------- GENERAL UTS
+*/
+
+body.body--dark {
+  background-color: var(--q-color-dark);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/*
+ *------------------------- SPECIFIC DESIGNS
+*/
+
+.btn-grineer-cutout-right {
+  position: relative;
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 9px;
+    background-color: inherit;
+  }
+  &::after {
+    clip-path: polygon(0 0, 0% 100%, 0 50%);
+  }
+  &:hover {
+    &::after {
+      transition: clip-path .2s ease, left .2s cubic-bezier(.91,1.94,.44,.89) .15s;
+      left: calc(100% + 5px);
+      clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+  }
+}
+
+/*
+ *------------------------- POSITIONING
+*/
+
+.flex-nogrow {
+  flex: 0 0 auto;
+}
+
+.absolute-top-50 {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%)
+}
+
+.top-overflow-50 {
+	margin-top: -50%;
+}
+
+.translate-t-50 {
+  transform: translateY(-50%);
+}
+
+.translate-b-50 {
+  transform: translateY(50%);
+}
+
+/*
+ *------------------------- TYPOGRAPHY
+*/
+
+.deco-none {
+  text-decoration: none
+}
+
+.deco-lineThrough {
+  text-decoration: line-through;
+}
+
+.deco-overline {
+  text-decoration: overline;
+}
+
+.deco-underline {
+  text-decoration: underline;
+}
+
+.small-line {
+  line-height: 1;
+}
+
+.text-sm {
+  font-size: .8em;
+}
+
+.text-xs {
+  font-size: .7em;
+}
+
+.show-newline {
+  white-space:pre;
+}
+
+/*
+ *------------------------- SHADOWS
+*/
+
+.drop-shadow-1 {
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.7));
+}
+
+.drop-shadow-2 {
+  filter: drop-shadow(0 0 2px rgba(0,0,0,.7));
+}
+
+.drop-shadow-3 {
+  filter: drop-shadow(0 0 4px rgba(0,0,0,.7));
+}
+
+.drop-shadow-4 {
+  filter: drop-shadow(0 0 6px rgba(0,0,0,.7));
+}
+
+.drop-shadow-5 {
+  filter: drop-shadow(0 0 8px rgba(0,0,0,.7));
+}
+
+/*
+ *------------------------- BORDERS
+*/
+
+.border-lightgray {
+  border: 1px solid lightgray;
+}
+
+.border-gray {
+  border: 1px solid gray;
+}
+
+.block-underline {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28)
+}
+
+/*
+ *------------------------- TRANSITIONS
+*/
+
+.t-fast-ease {
+  transition: all .1s ease;
+}
+
+.t-fast-linear {
+  transition: all .1s linear;
+}
+
+.t-fast-ease-in {
+  transition: all .1s ease-in;
+}
+
+.t-fast-ease-out {
+  transition: all .1s ease-out;
+}
+
+.t-fast-ease-in-out {
+  transition: all .1s ease-in-out;
+}
+
+.t-normal-ease {
+  transition: all .2s ease;
+}
+
+.t-normal-linear {
+  transition: all .2s linear;
+}
+
+.t-normal-ease-in {
+  transition: all .2s ease-in;
+}
+
+.t-normal-ease-out {
+  transition: all .2s ease-out;
+}
+
+.t-normal-ease-in-out {
+  transition: all .2s ease-in-out;
+}
+
+/*
+ *------------------------- CUSTOM ANIMS
+*/
+
+.alert-contour {
+  animation: 3s linear TGIalertContour infinite;
+}
+
+@keyframes TGIalertContour {
+  0%, 100% {
+    box-shadow: 0 0 10px inset $primary;
+  }
+  50% {
+    box-shadow: 0 0 150px inset $primary;
+  }
+}

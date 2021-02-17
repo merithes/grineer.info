@@ -1,0 +1,9 @@
+{
+  "@quasar/apollo": {
+    "graphql_uri": "https://strapi.grineer.info"
+  },
+  "@quasar/qmarkdown": {
+    "import_md": true,
+    "import_vmd": false
+  }
+}

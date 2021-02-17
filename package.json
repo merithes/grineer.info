@@ -1,0 +1,48 @@
+{
+  "name": "grineer.info.front",
+  "version": "0.0.1",
+  "description": "The latest informations from the Empire",
+  "productName": "The Grineer Informer",
+  "author": "Rak",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "@quasar/extras": "^1.9.16",
+    "axios": "^0.21.1",
+    "babel": "^6.23.0",
+    "cordova": "^10.0.0",
+    "core-js": "^3.6.5",
+    "global": "^4.4.0",
+    "quasar": "^1.15.2",
+    "remove-markdown": "^0.3.0",
+    "vue-awesome-countdown": "^1.1.4"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-apollo": "^1.0.0-beta.7",
+    "@quasar/quasar-app-extension-qmarkdown": "^1.4.1",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.21.2",
+    "workbox-webpack-plugin": "^5.0.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
