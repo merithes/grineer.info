@@ -26,8 +26,7 @@
     "@quasar/quasar-app-extension-apollo": "^1.0.0-beta.7",
     "@quasar/quasar-app-extension-qmarkdown": "^1.4.1",
     "babel-loader": "^8.2.2",
-    "webpack": "^5.21.2",
-    "workbox-webpack-plugin": "^5.0.0"
+    "webpack": "^5.21.2"
   },
   "browserslist": [
     "last 10 Chrome versions",
