@@ -23,7 +23,7 @@
                 published_at
                 slug
                 thumbnail { url width }
-                author { name }
+                created_by { username firstname lastname }
                 tags { name slug hex_color }
               }
             }`'

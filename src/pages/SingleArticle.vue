@@ -12,7 +12,7 @@
         published_at
         thumbnail { url }
         banner { url }
-        author { name }
+        created_by { username firstname lastname }
         category { name slug hasArchive }
         tags (sort: "order") { name slug id hex_color }
       }
@@ -210,12 +210,23 @@
 
         <div
           v-if="typeof Article.body === 'string' && Article.body.length"
-          class="col-xs-10 col-md-9 col-sm-9 col-lg-8"
+          class="col-xs-10 col-sm-9 col-lg-8"
         >
           <q-markdown
             :src="Article.body.split('/uploads/').join($strapiURL+'/uploads/')"
             no-heading-anchor-links
           />
+        </div>
+
+        <!-- COMMENT SECTION -->
+
+        <div class="col-xs-5 col-sm-5 col-lg-5 q-mt-xl block">
+          <div class="text-h5">
+            <span class="block-underline q-pb-xs q-pr-sm q-mb-md inline-block">
+              Comments
+            </span>
+          </div>
+          <commentSubmit :article-id="Article.id"/>
         </div>
       </div>
     </template>
@@ -224,9 +235,10 @@
 
 <script>
   import showBanner from 'components/widget/showBanner.vue'
+  import commentSubmit from 'components/comments/commentSubmit.vue'
   export default {
     name: 'PageIndex',
-    components: { showBanner },
+    components: { showBanner, commentSubmit },
     data () {
       return {
       }

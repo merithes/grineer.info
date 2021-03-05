@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // import example from './module-example'
+import session from './session'
+import liveDataStore from './liveDataStore'
 
 Vue.use(Vuex)
 
@@ -21,7 +23,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      session,
+      liveDataStore,
     },
 
     // enable strict mode (adds overhead!)

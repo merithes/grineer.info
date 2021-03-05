@@ -19,6 +19,18 @@ const routes = [
       {
         path: 'category/:categorySlug',
         component: () => import('pages/CategoryArchive.vue')
+      },
+      {
+        path: 'login',
+        component: () => import('pages/Login.vue')
+      },
+      {
+        path: 'forgot-password',
+        component: () => import('pages/ForgotPassword.vue')
+      },
+      {
+        path: 'reset-password',
+        component: () => import('pages/ResetPassword.vue')
       }
     ]
   },

@@ -124,12 +124,12 @@
               <q-badge
                 v-if="typeof event.faction !== 'undefined' && event.faction.length" color="orange-8"
                 :label="event.faction"
-                class="absolute-top-right q-mr-md"
+                class="absolute-top-right q-mr-md q-mt-md"
               />
               <q-badge
                 v-else-if="typeof event.affiliatedWith !== 'undefined' && event.affiliatedWith.length" color="light-green-9"
                 :label="event.affiliatedWith"
-                class="absolute-top-right q-mr-md"
+                class="absolute-top-right q-mr-md q-mt-md"
               />
             </div>
           </div>
@@ -397,11 +397,15 @@
     components: {},
     data () {
       return {
-        info: {},
-        loadedData: false,
+        loadedData: Object.keys(this.$store.state.liveDataStore.fullData).length !== 0,
         sortieSlideFirst: 0,
         autoPlaySortieDuration: 10 * 1000,
         pausedSortieSlide: false
+      }
+    },
+    computed: {
+      info() {
+        return this.$store.state.liveDataStore.fullData
       }
     },
     props: {
@@ -491,8 +495,8 @@
           .get("https://api.warframestat.us/pc?language=en")
           .then(response => {
             if (response.status === 200) {
-              _this.info = response.data
               _this.loadedData = true
+              _this.$store.commit('liveDataStore/updateData', response.data)
             }
           })
       }

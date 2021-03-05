@@ -1,6 +1,5 @@
-export function apolloClientBeforeCreate (/* { apolloClientConfigObj, app, router, store, ssrContext, urlPath, redirect } */) {
+export function apolloClientBeforeCreate ({ apolloClientConfigObj /* apolloClientConfigObj, app, router, store, ssrContext, urlPath, redirect */ }) {
   // if needed you can modify here the config object used for apollo client
-  // instantiation
 }
 
 export function apolloClientAfterCreate (/* { apolloClient, app, router, store, ssrContext, urlPath, redirect } */) {

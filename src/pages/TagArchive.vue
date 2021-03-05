@@ -19,6 +19,7 @@
         published_at
         slug
         thumbnail { url width }
+        created_by { username firstname lastname }
         tags (sort: "order") { name id slug hex_color }
       }
     }

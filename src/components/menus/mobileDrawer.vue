@@ -1,9 +1,10 @@
 <template>
   <q-item
+    v-if="show"
     clickable
-    tag="a"
-    target="_blank"
-    :href="link"
+    :target="!local ? '_blank' : ''"
+    :tag="!local ? 'a' : 'div'"
+    :href="!local ? link : ''"
   >
     <q-item-section
       v-if="icon"
@@ -43,6 +44,16 @@ export default {
     icon: {
       type: String,
       default: ''
+    },
+
+    local: {
+      type: Boolean,
+      default: true
+    },
+
+    show: {
+      type: Boolean,
+      default: true
     }
   }
 }

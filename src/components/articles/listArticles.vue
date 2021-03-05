@@ -59,7 +59,7 @@
           </div>
 
           <!-- BLOCK LINK -->
-          <q-skeleton class="q-mt-sm" type="square" square width="23ch"/>
+          <q-skeleton class="q-mt-sm" type="rect" square width="23ch"/>
 
           <!-- BLOCK DATE -->
 
@@ -212,14 +212,14 @@
           <!-- BLOCK AUTEUR -->
 
           <div
-            v-if="typeof newsArticle.author === 'object' && newsArticle.author !== null && typeof newsArticle.author.name !== 'undefined' && newsArticle.author.name.length"
+            v-if="typeof newsArticle.created_by === 'object' && newsArticle.created_by !== null"
             :class="{
               'col-sm-12 col-xs-6': $q.screen.width > 410,
               'text-right': $q.screen.width < 600 && $q.screen.width > 410,
               'col-xs-12': $q.screen.width <= 410,
             }"
           >
-            <q-icon name="img:images/GRINEER_WHITE.svg" /> {{ newsArticle.author.name }}
+            <q-icon name="img:images/GRINEER_WHITE.svg" /> {{ newsArticle.created_by.username !== null ? newsArticle.created_by.username : `${newsArticle.created_by.firstname} ${newsArticle.created_by.lastname}` }}
           </div>
 
           <!-- BLOCK TAGS -->

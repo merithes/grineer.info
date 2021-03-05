@@ -15,18 +15,53 @@
           v-if="!isMobile"
           unelevated
         >
-          <q-btn
+          <template
             v-for="(link, index) in menuLinks"
-            :to="link.link"
-            :key="index"
-            target="_blank"
-            type="a"
-            class="no-border-radius"
-            :icon="link.icon"
-            :label="link.title"
-          />
+          >
+            <q-btn
+              v-if="link.show && link.local"
+              :to="link.link"
+              :key="index"
+              type="a"
+              target="_blank"
+              class="no-border-radius"
+              :icon="link.icon"
+              :label="link.title"
+            />
+            <q-btn
+              v-else-if="link.show"
+              :href="link.link"
+              :key="index"
+              type="a"
+              target="_blank"
+              class="no-border-radius"
+              :icon="link.icon"
+              :label="link.title"
+            />
+          </template>
         </q-btn-group>
-        <div v-if="!isMobile"/>
+        <q-btn
+          v-if="this.$store.state.session.expiry < Math.floor(Date.now() / 1000)"
+          to="/login"
+          icon="login"
+          unelevated
+          flat
+        >
+          <q-tooltip>
+            Login
+          </q-tooltip>
+        </q-btn>
+        <q-btn
+          v-else
+          icon="logout"
+          @click="logout()"
+          unelevated
+          flat
+        >
+          <q-tooltip>
+            Logout
+          </q-tooltip>
+        </q-btn>
         <q-btn
           v-if="isMobile"
           flat
@@ -73,12 +108,19 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <mobileDrawer
+        <template
           v-for="(link, index) in menuLinks"
-          :key="index"
-          v-bind="link"
-          color="black"
-        />
+        >
+          <mobileDrawer v-if="!link.local" :key="index" v-bind="link" color="black"/>
+          <router-link
+            v-else
+            :to="link.link"
+            :key="index"
+            class="deco-none"
+          >
+            <mobileDrawer v-bind="link" color="black"/>
+          </router-link>
+        </template>
       </q-list>
     </q-drawer>
 
@@ -89,33 +131,58 @@
 </template>
 
 <script>
-import mobileDrawer from 'components/menus/mobileDrawer.vue'
+  import jwt_decode from 'jwt-decode'
+  import mobileDrawer from 'components/menus/mobileDrawer.vue'
 
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  }
-];
-
-export default {
-  name: 'MainLayout',
-  components: { mobileDrawer },
-  data () {
-    return {
-      leftDrawerOpen: false,
-      menuLinks: linksData
+  export default {
+    name: 'MainLayout',
+    components: { mobileDrawer },
+    data () {
+      return {
+        leftDrawerOpen: false,
+        checkJwtExpiryInterval: ''
+      }
+    },
+    created() {
+      this.checkJwtExpiry()
+      this.checkJwtExpiryInterval = setInterval(this.checkJwtExpiry, 1000)
+    },
+    beforeDestroy() {
+      clearInterval(this.checkJwtExpiryInterval)
+    },
+    computed: {
+      isMobile() {
+        return (this.$q.screen.width <= 1023)
+      },
+      menuLinks() {
+        return [
+          {
+            show: true,
+            title: 'Docs',
+            caption: 'quasar.dev',
+            icon: 'school',
+            link: 'https://quasar.dev',
+            local: false
+          }
+        ]
+      }
+    },
+    methods: {
+      logout(expiry = false) {
+        let username = this.$store.state.session.username
+        this.$store.commit('session/wipe')
+        this.$q.notify({
+          type: 'info',
+          message: expiry ? `Your login expired ${username}, you have been logged out.` : `Goodbye ${username}!`
+        })
+      },
+      checkJwtExpiry() {
+        if (this.$store.state.session.jwt.length && this.$store.state.session.jwt !== 'false') {
+          if (this.$store.state.session.expiry <= Math.floor(Date.now() / 1000)) {
+            this.logout()
+          }
+        }
+      }
     }
-  },
-  computed: {
-    isMobile() {
-      return (this.$q.screen.width <= 1023)
-    }
-  },
-  methods: {
   }
-}
-
 </script>
