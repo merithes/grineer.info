@@ -226,7 +226,7 @@
               Comments
             </span>
           </div>
-          <commentSubmit :article-id="Article.id"/>
+          <commentSpace :article-id="Article.id"/>
         </div>
       </div>
     </template>
@@ -235,10 +235,10 @@
 
 <script>
   import showBanner from 'components/widget/showBanner.vue'
-  import commentSubmit from 'components/comments/commentSubmit.vue'
+  import commentSpace from 'components/comments/commentSpace.vue'
   export default {
     name: 'PageIndex',
-    components: { showBanner, commentSubmit },
+    components: { showBanner, commentSpace },
     data () {
       return {
       }

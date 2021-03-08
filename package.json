@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.12.16",
     "@quasar/extras": "^1.9.16",
     "apollo-boost": "^0.4.9",
+    "apollo-link-context": "^1.0.20",
     "axios": "^0.21.1",
     "babel": "^6.23.0",
     "cordova": "^10.0.0",

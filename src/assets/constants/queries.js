@@ -15,11 +15,11 @@ mutation LoginUser ($username: String!, $password: String!) {
 }`
 
 export const COMMENT_SUBMIT = gql`
-mutation SubmitComment ($articleId: ID!, $content: String!) {
+mutation SubmitComment ($articleId: ID, $commentInput: String!) {
   createComment(
     input: {
       data : {
-        content: $content
+        content: $commentInput
         news_article: $articleId
   		}
     }
@@ -28,5 +28,16 @@ mutation SubmitComment ($articleId: ID!, $content: String!) {
       id
       content
     }
+  }
+}`
+
+export const GET_COMMENTS = gql`
+query getComments ($articleId: ID){
+  comments(where: {news_article: $articleId}){
+    id
+    created_at
+    updated_at
+    content
+    author { id username}
   }
 }`
