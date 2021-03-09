@@ -19,11 +19,19 @@
             v-for="(link, index) in menuLinks"
           >
             <q-btn
-              v-if="link.show && link.local"
+              v-if="link.show && link.local && !link.action"
               :to="link.link"
               :key="index"
               type="a"
               target="_blank"
+              class="no-border-radius"
+              :icon="link.icon"
+              :label="link.title"
+            />
+            <q-btn
+              v-else-if="link.show && link.action"
+              @click="link.actionFunction()"
+              :key="index"
               class="no-border-radius"
               :icon="link.icon"
               :label="link.title"
@@ -41,7 +49,7 @@
           </template>
         </q-btn-group>
         <q-btn
-          v-if="this.$store.state.session.expiry < Math.floor(Date.now() / 1000)"
+          v-if="!isMobile && this.$store.state.session.expiry < Math.floor(Date.now() / 1000)"
           to="/login"
           icon="login"
           unelevated
@@ -52,7 +60,7 @@
           </q-tooltip>
         </q-btn>
         <q-btn
-          v-else
+          v-else-if="!isMobile"
           icon="logout"
           @click="logout()"
           unelevated
@@ -111,15 +119,7 @@
         <template
           v-for="(link, index) in menuLinks"
         >
-          <mobileDrawer v-if="!link.local" :key="index" v-bind="link" color="black"/>
-          <router-link
-            v-else
-            :to="link.link"
-            :key="index"
-            class="deco-none"
-          >
-            <mobileDrawer v-bind="link" color="black"/>
-          </router-link>
+          <mobileDrawer :key="index" v-bind="link" color="black"/>
         </template>
       </q-list>
     </q-drawer>
@@ -163,7 +163,22 @@
             icon: 'school',
             link: 'https://quasar.dev',
             local: false
-          }
+          },
+          {
+            show: this.isMobile && this.$store.state.session.expiry < Math.floor(Date.now() / 1000),
+            title: 'Login',
+            icon: 'login',
+            link: '/login',
+            local: true
+          },
+          {
+            show: this.isMobile && !(this.$store.state.session.expiry < Math.floor(Date.now() / 1000)),
+            title: 'Logout',
+            caption: 'Logout',
+            icon: 'logout',
+            action: true,
+            actionFunction: this.logout
+          },
         ]
       }
     },
@@ -177,10 +192,8 @@
         })
       },
       checkJwtExpiry() {
-        if (this.$store.state.session.jwt.length && this.$store.state.session.jwt !== 'false') {
-          if (this.$store.state.session.expiry <= Math.floor(Date.now() / 1000)) {
-            this.logout()
-          }
+        if (this.$store.state.session.expiry > 0 && this.$store.state.session.expiry <= Math.floor(Date.now() / 1000)) {
+          this.logout()
         }
       }
     }

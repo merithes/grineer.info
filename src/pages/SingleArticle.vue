@@ -150,7 +150,7 @@
                       v-for="tag in Article.tags"
                       v-if="tag !== null && typeof tag.slug !== 'undefined'"
                     >
-                      <router-link :to="'/tag/'+tag.slug">
+                      <router-link :to="'/tag/'+tag.slug" class="deco-none">
                         <q-badge
                           v-if="typeof tag.name === 'string' && tag.name.length"
                           :key="tag.id"
@@ -220,9 +220,9 @@
 
         <!-- COMMENT SECTION -->
 
-        <div class="col-xs-5 col-sm-5 col-lg-5 q-mt-xl block">
+        <div class="col-sm-7 col-md-8 col-xs-10 col-lg-7 q-mt-xl q-mb-xl block">
           <div class="text-h5">
-            <span class="block-underline q-pb-xs q-pr-sm q-mb-md inline-block">
+            <span class="block-underline q-pb-xs q-pr-md q-mb-md inline-block">
               Comments
             </span>
           </div>

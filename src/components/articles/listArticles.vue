@@ -234,7 +234,7 @@
                 v-for="tag in newsArticle.tags"
                 v-if="tag !== null && typeof tag.slug !== 'undefined'"
               >
-                <router-link :to="'/tag/'+tag.slug">
+                <router-link :to="'/tag/'+tag.slug" class="deco-none">
                   <q-badge
                     v-if="typeof tag.name === 'string' && tag.name.length"
                     :key="tag.id"

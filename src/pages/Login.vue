@@ -9,19 +9,19 @@
     <q-form @submit="login" class="q-px-md col-xs-12 col-sm-10 q-md-8 col-lg-6 q-mt-lg">
       <q-input v-model="username" name="username" label="Username" type="text" class="courier-prime" required/>
       <q-input v-model="password" name="password" label="Password" type="password" class="courier-prime q-mt-md" required/>
-      <div class="row justify-center q-mt-xl q-col-gutter-md">
-        <div class="col-auto">
-          <q-btn type="a" label="I'm a big dum dum" color="primary" class="no-border-radius" to="forgot-password"/>
-        </div>
-        <div class="col-auto">
-          <q-btn type="submit" :loading="loading" label="Login" color="primary" class="no-border-radius">
-            <template v-slot:loading>
-              <q-spinner-puff color="white" />
-            </template>
-          </q-btn>
-        </div>
+      <div class="text-center q-mt-lg">
+        <q-btn type="submit" :loading="loading" label="Login" color="primary" class="no-border-radius">
+          <template v-slot:loading>
+            <q-spinner-puff color="white" />
+          </template>
+        </q-btn>
+      </div>
+      <div class="text-center q-mt-lg q-gutter-md">
+        <q-btn type="a" label="Register" color="white" class="no-border-radius text-caption" to="register" dense flat/>
+        <q-btn type="a" label="I forgot my password" color="primary" class="no-border-radius text-caption" to="forgot-password" dense flat/>
       </div>
     </q-form>
+  </q-form>
 
   </div>
 </template>

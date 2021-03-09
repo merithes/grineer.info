@@ -37,7 +37,7 @@
     </div>
     <div
       v-if="!isMobile"
-      class="col-md-4 col-lg-3"
+      class="col-md-4 col-lg-3 q-pb-xl"
     >
       <liveData/>
     </div>
@@ -51,7 +51,7 @@
       :no-swipe-close="true"
       :no-swipe-backdrop="true"
     >
-      <div class="relative-position q-pt-lg">
+      <div class="relative-position q-pt-lg q-pb-xl">
         <q-btn
           flat
           round

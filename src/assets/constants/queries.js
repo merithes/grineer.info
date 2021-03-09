@@ -7,10 +7,19 @@ mutation LoginUser ($username: String!, $password: String!) {
     password: $password
   } ) {
     jwt
-    user {
-      id
-      username
-    }
+    user { id username }
+  }
+}`
+
+export const REGISTER = gql`
+mutation RegisterUser ($username: String!, $email: String!, $password: String!) {
+  register( input: {
+    username: $username,
+    email: $email,
+    password: $password
+  } ) {
+    user { id username }
+    jwt
   }
 }`
 

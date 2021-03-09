@@ -29,6 +29,13 @@ body {
   background: #438257;
 }
 
+.text-thin-dark-overlay {
+  color: rgba(0, 0, 0, .07);
+}
+.bg-thin-dark-overlay {
+  background: rgba(0, 0, 0, .07);
+}
+
 .text-light-dark-overlay {
   color: rgba(0, 0, 0, .1);
 }
@@ -55,6 +62,13 @@ body {
 }
 .bg-uheavy-dark-overlay {
   background: rgba(0, 0, 0, .9);
+}
+
+.text-thin-bright-overlay {
+  color: rgba(255, 255, 255, .07);
+}
+.bg-thin-bright-overlay {
+  background: rgba(255, 255, 255, .07);
 }
 
 .text-light-bright-overlay {
@@ -186,6 +200,10 @@ body {
   padding-top: .4em;
   padding-bottom: .4em;
   padding-right: .5em;
+}
+
+.comment-border {
+  border-left: 4px solid gray;
 }
 
 /*
