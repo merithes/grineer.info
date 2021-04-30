@@ -129,7 +129,7 @@
           >
             <template v-slot:loading>
               <div class="full-height full-width row justify-center items-center">
-                <q-spinner-rings color="accent" size="80%"/>
+                <q-spinner-puff color="accent" size="80%"/>
               </div>
             </template>
           </q-img>
@@ -144,7 +144,7 @@
           >
             <template v-slot:loading>
               <div class="full-height full-width row justify-center items-center">
-                <q-spinner-rings color="accent" size="80%"/>
+                <q-spinner-puff color="accent" size="80%"/>
               </div>
             </template>
           </q-img>

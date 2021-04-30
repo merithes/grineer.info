@@ -4,7 +4,7 @@
     class="row justify-center items-center q-pt-xl"
   >
     <div class="q-px-md col-xs-12 q-mt-xl text-h5 text-center courier-prime">
-      Login
+      Register
     </div>
     <q-form @submit="register" class="q-px-md col-xs-12 col-sm-10 q-md-8 col-lg-6 q-mt-lg">
       <div class="row q-col-gutter-xl">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="text-center q-mt-lg">
-        <q-btn type="submit" :loading="loading" :disabled="password != c_password" label="Register" color="primary" class="no-border-radius">
+        <q-btn type="submit" :loading="loading" :disabled="password != c_password" label="Register" color="primary" class="no-border-radius courier-prime">
           <q-tooltip v-if="password != c_password">
             Your passwords don't match
           </q-tooltip>
@@ -50,7 +50,7 @@
         </q-btn>
       </div>
       <div class="text-center q-mt-lg q-gutter-md">
-        <q-btn type="a" label="Login" color="white" class="no-border-radius text-caption" to="login" dense flat/>
+        <q-btn type="a" label="Back to login" color="white" class="no-border-radius text-caption courier-prime" to="login" dense flat/>
       </div>
     </q-form>
   </q-form>

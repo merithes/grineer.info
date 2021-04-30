@@ -1,7 +1,8 @@
 // app global css in SCSS form
 
 body {
-  overflow-y: scroll
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 /*
@@ -174,6 +175,30 @@ body {
   transform: scale(1.1);
 }
 
+.textarea-no-resize,
+.textarea-no-resize textarea {
+  resize: none !important;
+}
+
+.force-square {
+  position: relative;
+}
+
+.force-square::before {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.force-square > * {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 /*
  *------------------------- CUSTOM BLOCKS BEHAVIOR
 */
@@ -206,12 +231,17 @@ body {
   border-left: 4px solid gray;
 }
 
+.comment-border-preview {
+  border-color: var(--q-color-secondary)
+}
+
 /*
  *------------------------- GENERAL UTS
 */
 
 body.body--dark {
-  background-color: var(--q-color-dark);
+  // background-color: var(--q-color-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='300' height='300'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.805' numOctaves='10' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' fill='transparent'/%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
 }
 
 .pointer-events-none {
@@ -296,6 +326,14 @@ body.body--dark {
   text-decoration: underline;
 }
 
+.text-transform-none {
+  text-transform: none;
+}
+
+.text-transform-capitalize {
+  text-transform: capitalize;
+}
+
 .small-line {
   line-height: 1;
 }
@@ -346,6 +384,14 @@ body.body--dark {
 
 .border-gray {
   border: 1px solid gray;
+}
+
+.grineer-primary-border {
+  border: 1px solid var(--q-color-primary)
+}
+
+.grineer-primary-border-faded {
+  border: 1px solid #bf293491
 }
 
 .block-underline {

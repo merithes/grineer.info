@@ -9,11 +9,14 @@
     <q-form @submit="forgotPassword" class="q-px-md col-xs-12 col-sm-10 q-md-8 col-lg-6 q-mt-lg">
       <q-input v-model="email" name="email" label="E-mail" type="email" class="courier-prime" required/>
       <div class="row justify-center q-mt-xl">
-        <q-btn type="submit" :loading="loading" label="Confirm" color="primary" class="no-border-radius">
+        <q-btn type="submit" :loading="loading" label="Confirm" color="primary" class="no-border-radius courier-prime">
           <template v-slot:loading>
             <q-spinner-puff color="white" />
           </template>
         </q-btn>
+      </div>
+      <div class="text-center q-mt-lg q-gutter-md">
+        <q-btn type="a" label="Back to login" color="white" class="no-border-radius text-caption courier-prime" to="login" dense flat/>
       </div>
     </q-form>
 

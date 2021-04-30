@@ -59,17 +59,39 @@
             Login
           </q-tooltip>
         </q-btn>
-        <q-btn
+        <q-btn-dropdown
           v-else-if="!isMobile"
-          icon="logout"
-          @click="logout()"
+          icon="person_outline"
+          :label="this.$store.state.session.username"
+          class="text-transform-none no-border-radius courier-prime"
+          content-class="no-border-radius"
           unelevated
           flat
         >
-          <q-tooltip>
-            Logout
-          </q-tooltip>
-        </q-btn>
+        <div class="q-gutter-md">
+          <div>
+            <q-btn
+              size="1em"
+              class="no-border-radius full-width text-transform-none courier-prime"
+              to="/user"
+              unelevated
+              flat
+            >
+              <q-icon name="contact_page" size="1.2em" class="q-mb-xs q-mr-sm"/>  Profile
+            </q-btn>
+          </div>
+          <div>
+            <q-btn
+              @click="logout()"
+              class="no-border-radius full-width text-transform-none courier-prime"
+              unelevated
+              flat
+            >
+              <q-icon name="logout" size="1.2em" class="q-mb-xs q-mr-sm"/> Logout
+            </q-btn>
+          </div>
+        </div>
+        </q-btn-dropdown>
         <q-btn
           v-if="isMobile"
           flat
@@ -125,7 +147,14 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <transition
+        appear
+        mode="out-in"
+        :enter-active-class="pageAnimationIn"
+        :duration="{ enter: 800, leave: 0 }"
+      >
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
@@ -151,6 +180,19 @@
       clearInterval(this.checkJwtExpiryInterval)
     },
     computed: {
+      pageAnimationIn() {
+        if (
+          this.$route.path === '/login' ||
+          this.$route.path === '/forgot-password' ||
+          this.$route.path === '/register'
+        ) {
+          return 'animated zoomIn'
+        }
+        return ''
+      },
+      pageAnimationOut() {
+        return ''
+      },
       isMobile() {
         return (this.$q.screen.width <= 1023)
       },

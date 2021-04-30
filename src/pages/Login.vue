@@ -10,15 +10,15 @@
       <q-input v-model="username" name="username" label="Username" type="text" class="courier-prime" required/>
       <q-input v-model="password" name="password" label="Password" type="password" class="courier-prime q-mt-md" required/>
       <div class="text-center q-mt-lg">
-        <q-btn type="submit" :loading="loading" label="Login" color="primary" class="no-border-radius">
+        <q-btn type="submit" :loading="loading" label="Login" color="primary" class="no-border-radius courier-prime">
           <template v-slot:loading>
             <q-spinner-puff color="white" />
           </template>
         </q-btn>
       </div>
       <div class="text-center q-mt-lg q-gutter-md">
-        <q-btn type="a" label="Register" color="white" class="no-border-radius text-caption" to="register" dense flat/>
-        <q-btn type="a" label="I forgot my password" color="primary" class="no-border-radius text-caption" to="forgot-password" dense flat/>
+        <q-btn type="a" label="Register" color="white" class="no-border-radius text-caption courier-prime" to="register" dense flat/>
+        <q-btn type="a" label="I forgot my password" color="primary" class="no-border-radius text-caption courier-prime" to="forgot-password" dense flat/>
       </div>
     </q-form>
   </q-form>

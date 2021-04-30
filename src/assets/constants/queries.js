@@ -40,13 +40,46 @@ mutation SubmitComment ($articleId: ID, $commentInput: String!) {
   }
 }`
 
+export const UPDATE_COMMENT = gql`
+mutation UpdateComment ($commentId: ID!, $commentInput: String!) {
+  updateComment (input: { where: { id: $commentId}, data: { content: $commentInput } }){
+   comment { id }
+ }
+}`
+
 export const GET_COMMENTS = gql`
-query getComments ($articleId: ID){
-  comments(where: {news_article: $articleId}){
+query GetComments ($articleId: ID){
+  comments(where: {news_article: $articleId}, sort: "created_at:desc"){
     id
     created_at
     updated_at
     content
     author { id username}
+  }
+}`
+
+
+
+export const GET_USER = gql`
+query GetUser ($userId: ID!){
+  user(id: $userId){
+    id
+    created_at
+    username
+    email
+    blocked
+    description
+    displayName
+    comments (sort: "created_at:desc", limit: 3) {
+      id
+      content
+      created_at
+      updated_at
+      news_article {
+        id
+        slug
+        title
+      }
+    }
   }
 }`

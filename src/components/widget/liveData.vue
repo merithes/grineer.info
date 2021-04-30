@@ -164,7 +164,7 @@
             infinite
             :autoplay="!pausedSortieSlide ? autoPlaySortieDuration : false"
             @transition="pausedSortieSlide = false"
-            height="9em"
+            height="10em"
             class="bg-transparent text-white no-border-radius no-padding q-mt-sm"
           >
             <q-carousel-slide
